@@ -1,0 +1,53 @@
+{
+  "slides": [
+    {
+      "id": "1",
+      "url": "http://localhost:3000/photo/1.png",
+      "title": "photo1",
+      "description": "photo2",
+      "likes": 400
+    },
+    {
+      "id": "2",
+      "url": "http://localhost:3000/photo/2.png",
+      "title": "photo2",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pretium tincidunt arcu tempor condimentum. Cras in massa non sem ultrices dapibus ut vel erat. Aliquam ut dui ac enim gravida tempor non eu odio. Proin ultrices efficitur libero, sit amet vestibulum turpis eleifend in. Duis ultricies augue eu maximus laoreet. Maecenas non enim pulvinar, rutrum enim at, faucibus mauris.",
+      "likes": 40
+    },
+    {
+      "id": "3",
+      "url": "http://localhost:3000/phoo/3.png",
+      "title": "photo3",
+      "description": "photo4",
+      "likes": 4331
+    },
+    {
+      "id": "4",
+      "url": "http://localhost:3000/photo/4.png",
+      "title": "photo4",
+      "description": "photo5",
+      "likes": 352
+    },
+    {
+      "id": "5",
+      "url": "http://localhost:3000/photo/5.png",
+      "title": "photo5",
+      "description": "photo6",
+      "likes": 326
+    },
+    {
+      "id": "6",
+      "url": "http://localhost:3000/photo/6.png",
+      "title": "photo6",
+      "description": "photo7",
+      "likes": 223
+    },
+    {
+      "id": "7",
+      "url": "http://localhost:3000/photo/7.png",
+      "title": "photo7",
+      "description": "photo8",
+      "likes": 831
+    }
+  ]
+}
