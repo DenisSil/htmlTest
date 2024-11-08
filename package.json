@@ -9,6 +9,7 @@
     "sass": "^1.80.6"
   },
   "dependencies": {
+    "http-server": "^14.1.1",
     "swiper": "^11.1.14"
   }
 }
