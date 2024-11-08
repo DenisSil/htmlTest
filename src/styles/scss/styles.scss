@@ -444,6 +444,10 @@ body {
 
     .social {
         flex-direction: row;
+
+        .links-wraper {
+            flex-direction: row;
+        }
     }
 }
 
@@ -459,5 +463,9 @@ body {
 
     .social {
         flex-direction: column;
+
+        .links-wraper {
+            flex-direction: column;
+        }
     }
 }

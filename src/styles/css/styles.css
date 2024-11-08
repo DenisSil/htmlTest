@@ -367,6 +367,9 @@ body {
   .social {
     flex-direction: row;
   }
+  .social .links-wraper {
+    flex-direction: row;
+  }
 }
 @media all and (max-width: 760px) {
   html {
@@ -376,6 +379,9 @@ body {
     grid-template-rows: 100px 1fr 3fr 1fr;
   }
   .social {
+    flex-direction: column;
+  }
+  .social .links-wraper {
     flex-direction: column;
   }
 }
