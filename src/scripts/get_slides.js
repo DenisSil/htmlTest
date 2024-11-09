@@ -1,4 +1,4 @@
-async function getSlides(slideStart, slideLimit) {
+export async function getSlides(slideStart, slideLimit) {
     let res = await fetch(`http://localhost:3000/slides?_start=${slideStart}&_limit=${slideLimit}`, {
         method: "GET",
         headers: {

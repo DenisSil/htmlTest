@@ -1,10 +1,11 @@
 
 "use strict";
 
-import { updateSlideLikeCount } from 'update_slide_like_count.js';
-import { disableLikeButton } from "disable_like_button";
-import { getSlides } from 'get_slides.js';
-import { slidesUpdate } from 'slides_update.js';
+import { updateSlideLikeCount } from './update_slide_like_count.js';
+import { disableLikeButton } from "./disable_like_button.js";
+import { getSlides } from './get_slides.js';
+import { slidesUpdate } from './slides_update.js';
+import { createTemplateAndAppendInSwiper } from './create_template_and_append_in_swiper.js';
 
 let template = document.querySelector('#swiper-swipe-template').content;
 let errorTemplate = document.querySelector('#error-template').content;
@@ -16,7 +17,7 @@ let popup = document.querySelector(".popup");
 let closePopupButton = popup.querySelector(".popup__close");
 let slideDescription = document.querySelector(".slide-description");
 let slideDescriptionP = slideDescription.querySelector("p");
-// let slides = document.querySelector(".swiper-wrapper").children;
+let activePopup = popup.querySelector(".popup__body");
 let prevIndex = 0;
 let slidesCount = 0
 localStorage.clear();
@@ -40,23 +41,22 @@ let swiper = new Swiper(".swiper", {
     allowTouchMove: false,
 });
 
+
 likeButton.addEventListener("click", () => {
     let currentSlide = slideData[swiper.activeIndex];
 
     let newLikeCount = updateSlideLikeCount(currentSlide);
-
+    console.log(newLikeCount);
     likesCount.innerText = newLikeCount;
     localStorage.setItem(currentSlide.id, true);
     disableLikeButton(currentSlide.id, likeButton);
 
     popup.classList.add("open");
 
-    let activePopup = popup.querySelector(".popup__body");
+});
 
-    activePopup.addEventListener('click', () => {
-        popup.classList.remove("open");
-    });
-
+activePopup.addEventListener('click', () => {
+    popup.classList.remove("open");
 });
 
 closePopupButton.addEventListener('click', () => {
@@ -66,19 +66,17 @@ closePopupButton.addEventListener('click', () => {
 swiper.on("activeIndexChange", function () {
 
     let currentIndex = swiper.activeIndex;
-    console.log(currentIndex);
     if (currentIndex + 1 === slidesCount) {
         getSlidesAndUpdateSwiper(swiper);
     }
 
     let currentSlide = slideData[currentIndex];
-    console.log('здесь');
-    slidesUpdate(currentSlide, likesCount, likeButton, prevIndex, slideDescriptionP);
+    slidesUpdate(swiper, currentSlide, likesCount, likeButton, prevIndex, slideDescriptionP);
 
     prevIndex = currentIndex;
 });
 
-getSlidesAndUpdateSwiper(swiper);
+
 
 async function getSlidesAndUpdateSwiper(swiper) {
     
@@ -86,25 +84,11 @@ async function getSlidesAndUpdateSwiper(swiper) {
     slidesCount += 3;
 
     slideData.push(...slidesData);
-    createTemplateAndAppendInSwiper(slidesData, swiper);
+    createTemplateAndAppendInSwiper(slidesData, swiper, template, errorTemplate);
 
     if (slidesCount < 4) {
-         slidesUpdate(json[0], likesCount, likeButton, prevIndex, slideDescriptionP);
+         slidesUpdate(swiper, slidesData[0], likesCount, likeButton, prevIndex, slideDescriptionP);
     }
 };
 
-
-import { createTemplateAndAppendInSwiper } from 'create_template_and_append_in_swiper.js';
-
-
-// function createTemplateAndAppendInSwiper(json, swiper) {
-//     for (let i of json) {
-//         let newTemplate = createNewTemplate(i);
-//         let newErrorTemplate = errorTemplate.cloneNode(true);
-//         addToImgErrorListener(newTemplate, newErrorTemplate);
-//         swiper.appendSlide(newTemplate, template);
-//     }
-//     if (slidesCount < 4) {
-//         slidesUpdate(json[0], likesCount, likeButton, 0, slideDescriptionP);
-//     }
-// }
+getSlidesAndUpdateSwiper(swiper);

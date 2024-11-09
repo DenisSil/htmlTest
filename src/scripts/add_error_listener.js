@@ -1,4 +1,4 @@
-function addToImgErrorListener(swiper, template, errorTemplate){
+export function addToImgErrorListener(swiper, template, errorTemplate){
 
     let img = template.querySelector('img')
 

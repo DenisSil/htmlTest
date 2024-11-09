@@ -1,4 +1,4 @@
-function disableLikeButton(currentSlideId, button) {
+export function disableLikeButton(currentSlideId, button) {
     let isLiked = localStorage.getItem(currentSlideId);
 
     if (isLiked) {

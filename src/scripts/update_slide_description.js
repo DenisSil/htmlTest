@@ -1,6 +1,7 @@
-async function updateSlideDescription(currentSlide, slideDescription) {
+export async function updateSlideDescription(currentSlide, slideDescription) {
 
     slideDescription.classList.add("hide");
+    
     await setTimeout(() => {
         slideDescription.innerText = currentSlide.description;
     }, "1000");

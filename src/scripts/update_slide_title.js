@@ -1,7 +1,6 @@
-function updateSlideTitle(swiper, prevIndex) {
+export function updateSlideTitle(swiper, currentIndex, prevIndex) {
 
     let slides = swiper.slides;
-    let currentIndex = swiper.activeIndex;
 
     let currentSlide = slides[currentIndex];
     let prevSlide = slides[prevIndex];
